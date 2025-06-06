@@ -124,3 +124,7 @@ input:focus, textarea:focus {
 .bg-garnet {
     background-color: #800020;
 }
+
+html {
+        scroll-behavior: smooth;
+    }
