@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Looks | Virtual Dressing Room</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="font-body bg-[#FAF9F6] text-[#1A1A1A]">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md py-4 px-6 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-3xl font-logo text-[#7B2CBF]">The Looks</h1>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="hover:text-[#7B2CBF] transition">Home</a>
+                <a href="#try-on" class="hover:text-[#7B2CBF] transition">Virtual Try-On</a>
+                <a href="#dresses" class="hover:text-[#7B2CBF] transition">Dress Gallery</a>
+                <a href="#about" class="hover:text-[#7B2CBF] transition">About Us</a>
+                <a href="#contact" class="hover:text-[#7B2CBF] transition">Contact</a>
+            </div>
+            
+            <button class="md:hidden text-[#7B2CBF] text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-16 md:py-24 bg-gradient-to-b from-[#FFD6E8] to-[#FAF9F6]">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 leading-tight">
+                    Where <span class="text-[#7B2CBF]">Fashion</span><br>
+                    Meets <span class="text-[#FFC107]">Imagination</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8">
+                    Try your dream outfit before it's stitched. Upload your photo, select a dress, and preview the look instantly!
+                </p>
+                <a href="#try-on" class="glow-btn bg-[#FFC107] hover:bg-[#FFD700] text-white font-medium py-3 px-8 rounded-full text-lg transition transform hover:-translate-y-1">
+                    Try Now <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            
+            <div class="md:w-1/2 relative">
+                <div class="relative max-w-md mx-auto">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2670&auto=format&fit=crop" alt="Model wearing dress" class="rounded-xl shadow-xl w-full transform rotate-2">
+                    <div class="absolute -bottom-6 -right-6 bg-[#7B2CBF] text-white p-4 rounded-xl shadow-lg">
+                        <h4 class="font-bold">New Collection 2023</h4>
+                        <p class="text-sm">Try our latest designs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Try-On Section -->
+    <section id="try-on" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-2">Virtual <span class="text-[#7B2CBF]">Dressing Room</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Preview how our dresses will look on you with our virtual try-on technology
+                </p>
+            </div>
+            
+            <!-- 3-Step Process -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Step 1 -->
+                <div class="text-center p-6 bg-[#FAF9F6] rounded-xl shadow-sm">
+                    <div class="step-indicator bg-[#7B2CBF] mx-auto">1</div>
+                    <h3 class="font-heading font-bold text-xl mb-4">Upload Your Image</h3>
+                    <div class="file-input-wrapper relative mb-4 h-64 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img id="userPreview" src="" alt="User image preview" class="absolute w-full h-full object-cover hidden">
+                        <div id="userPlaceholder" class="p-4 text-center">
+                            <i class="fas fa-user text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500">No image selected</p>
+                        </div>
+                        <input type="file" id="userImageInput" class="file-input" accept="image/*">
+                    </div>
+                    
+                    <p class="text-gray-600 text-sm mb-4">Or try with our models:</p>
+                    <div class="flex justify-center space-x-2">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=2587&auto=format&fit=crop" alt="Model 1" class="w-16 h-16 object-cover rounded-full cursor-pointer border-2 border-transparent hover:border-[#7B2CBF]" onclick="loadSampleModel(this.src)">
+                        <img src="https://images.unsplash.com/photo-1524502397800-2eea0587be39?q=80&w=2574&auto=format&fit=crop" alt="Model 2" class="w-16 h-16 object-cover rounded-full cursor-pointer border-2 border-transparent hover:border-[#7B2CBF]" onclick="loadSampleModel(this.src)">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2564&auto=format&fit=crop" alt="Model 3" class="w-16 h-16 object-cover rounded-full cursor-pointer border-2 border-transparent hover:border-[#7B2CBF]" onclick="loadSampleModel(this.src)">
+                    </div>
+                    
+                    <button onclick="document.getElementById('userImageInput').click()" class="mt-4 bg-[#7B2CBF] hover:bg-[#6a1fa3] text-white py-2 px-6 rounded-full text-sm transition">
+                        <i class="fas fa-upload mr-2"></i> Upload Photo
+                    </button>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center p-6 bg-[#FAF9F6] rounded-xl shadow-sm">
+                    <div class="step-indicator bg-[#7B2CBF] mx-auto">2</div>
+                    <h3 class="font-heading font-bold text-xl mb-4">Select Your Dress</h3>
+                    
+                    <div class="file-input-wrapper relative mb-4 h-64 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img id="dressPreview" src="" alt="Dress preview" class="absolute w-full h-full object-contain hidden">
+                        <div id="dressPlaceholder" class="p-4 text-center">
+                            <i class="fas fa-tshirt text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-500">No dress selected</p>
+                        </div>
+                        <input type="file" id="dressImageInput" class="file-input" accept="image/*">
+                    </div>
+                    
+                    <p class="text-gray-600 text-sm mb-4">Or choose from our collection:</p>
+                    
+                    <div class="grid grid-cols-2 gap-2 mb-4">
+                        <div class="dress-thumbnail p-2 bg-white rounded-md border border-gray-200 overflow-hidden">
+                            <img src="https://i.ibb.co/dK5QWx2/dress1.png" alt="Dress 1" class="w-full" onclick="loadDressSample(this.src)">
+                        </div>
+                        <div class="dress-thumbnail p-2 bg-white rounded-md border border-gray-200 overflow-hidden">
+                            <img src="https://i.ibb.co/YQY1v5p/dress2.png" alt="Dress 2" class="w-full" onclick="loadDressSample(this.src)">
+                        </div>
+                        <div class="dress-thumbnail p-2 bg-white rounded-md border border-gray-200 overflow-hidden">
+                            <img src="https://i.ibb.co/Jmykg5B/dress3.png" alt="Dress 3" class="w-full" onclick="loadDressSample(this.src)">
+                        </div>
+                        <div class="dress-thumbnail p-2 bg-white rounded-md border border-gray-200 overflow-hidden">
+                            <img src="https://i.ibb.co/tB0Z5X8/dress4.png" alt="Dress 4" class="w-full" onclick="loadDressSample(this.src)">
+                        </div>
+                    </div>
+                    
+                    <button onclick="document.getElementById('dressImageInput').click()" class="mt-2 bg-[#7B2CBF] hover:bg-[#6a1fa3] text-white py-2 px-6 rounded-full text-sm transition">
+                        <i class="fas fa-upload mr-2"></i> Upload Dress PNG
+                    </button>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center p-6 bg-[#FAF9F6] rounded-xl shadow-sm">
+                    <div class="step-indicator bg-[#7B2CBF] mx-auto">3</div>
+                    <h3 class="font-heading font-bold text-xl mb-4">Preview Your Look</h3>
+                    
+                    <canvas id="previewCanvas" class="w-full h-64 bg-gray-100 mb-4"></canvas>
+                    
+                    <p id="previewHelpText" class="text-gray-500 text-sm mb-4">
+                        Upload your photo and a dress to see the preview
+                    </p>
+                    
+                    <div class="flex justify-center space-x-4">
+                        <button id="downloadBtn" class="bg-[#FFC107] hover:bg-[#FFD700] text-black py-2 px-6 rounded-full font-medium transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                            <i class="fas fa-download mr-2"></i> Download Look
+                        </button>
+                        <button id="resetBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-6 rounded-full transition">
+                            <i class="fas fa-redo mr-2"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dress Gallery Section -->
+    <section id="dresses" class="py-16 bg-gradient-to-b from-white to-[#FFD6E8]/10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-2">Our <span class="text-[#7B2CBF]">Dress Collection</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Browse through our exclusive collection of Indian and Western outfits
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Sarees -->
+                <div class="relative overflow-hidden rounded-xl shadow-md group">
+                    <img src="https://images.unsplash.com/photo-1569396116180-210c182bedb8?q=80&w=2669&auto=format&fit=crop" alt="Saree Collection" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-end pb-6">
+                        <h3 class="text-white text-xl font-heading font-bold">Sarees</h3>
+                        <button class="mt-2 bg-[#7B2CBF] hover:bg-[#8e3bdf] text-white py-1 px-4 rounded-full text-sm transition">
+                            Try On
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Lehengas -->
+                <div class="relative overflow-hidden rounded-xl shadow-md group">
+                    <img src="https://images.unsplash.com/photo-1542818437-e6ea0aba4a6b?q=80&w=2670&auto=format&fit=crop" alt="Lehenga Collection" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-end pb-6">
+                        <h3 class="text-white text-xl font-heading font-bold">Lehengas</h3>
+                        <button class="mt-2 bg-[#7B2CBF] hover:bg-[#8e3bdf] text-white py-1 px-4 rounded-full text-sm transition">
+                            Try On
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Kurtis -->
+                <div class="relative overflow-hidden rounded-xl shadow-md group">
+                    <img src="https://images.unsplash.com/photo-1628929612623-f89fe69f0223?q=80&w=2641&auto=format&fit=crop" alt="Kurti Collection" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-end pb-6">
+                        <h3 class="text-white text-xl font-heading font-bold">Kurtis</h3>
+                        <button class="mt-2 bg-[#7B2CBF] hover:bg-[#8e3bdf] text-white py-1 px-4 rounded-full text-sm transition">
+                            Try On
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Western -->
+                <div class="relative overflow-hidden rounded-xl shadow-md group">
+                    <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2b?q=80&w=2670&auto=format&fit=crop" alt="Western Collection" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-end pb-6">
+                        <h3 class="text-white text-xl font-heading font-bold">Western</h3>
+                        <button class="mt-2 bg-[#7B2CBF] hover:bg-[#8e3bdf] text-white py-1 px-4 rounded-full text-sm transition">
+                            Try On
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button class="border-2 border-[#7B2CBF] text-[#7B2CBF] hover:bg-[#7B2CBF] hover:text-white py-2 px-8 rounded-full font-medium transition">
+                    View All Collections <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-[#FAF9F6]">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-2">Get In <span class="text-[#7B2CBF]">Touch</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Have questions? Want to book an appointment? Contact us through any of these channels
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
+                <div class="text-center p-6 bg-white rounded-xl shadow-sm max-w-xs">
+                    <div class="bg-[#FFD6E8] text-[#7B2CBF] w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone-alt text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Phone</h3>
+                    <p class="text-gray-600 mb-2">+91 98765 43210</p>
+                    <p class="text-gray-400 text-sm">Mon-Sat, 10AM-7PM</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white rounded-xl shadow-sm max-w-xs">
+                    <div class="bg-[#FFD6E8] text-[#7B2CBF] w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Email</h3>
+                    <p class="text-gray-600 mb-2">contact@thelooks.com</p>
+                    <p class="text-gray-400 text-sm">Response within 24 hours</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white rounded-xl shadow-sm max-w-xs">
+                    <div class="bg-[#FFD6E8] text-[#7B2CBF] w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Address</h3>
+                    <p class="text-gray-600 mb-2">32, Linking Road, Bandra West, Mumbai</p>
+                    <p class="text-gray-400 text-sm">By appointment only</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-sm">
+                <h3 class="font-heading font-bold text-xl mb-4 text-center">Send Us a Message</h3>
+                <form class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                        <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B2CBF] focus:border-transparent"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-[#7B2CBF] hover:bg-[#6a1fa3] text-white py-3 px-6 rounded-lg font-medium transition">
+                        Send Message <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- WhatsApp Button -->
+        <div class="fixed bottom-6 right-6 z-50">
+            <a href="https://wa.me/919441041459" target="_blank" class="whatsapp-btn bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition hover:bg-[#128C7E]">
+                <i class="fab fa-whatsapp text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#7B2CBF] text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-3xl font-logo mb-2">The Looks</h2>
+                    <p class="text-[#FFD6E8]">Premium Women's Tailoring Studio</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-[#FFD6E8] hover:text-white text-xl"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-[#FFD6E8] hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-[#FFD6E8] hover:text-white text-xl"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#" class="text-[#FFD6E8] hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-[#FFD6E8] text-sm mb-1">© 2023 The Looks. All rights reserved.</p>
+                    <div class="flex space-x-4 justify-center md:justify-end">
+                        <a href="#" class="text-[#FFD6E8] hover:text-white text-sm">Privacy Policy</a>
+                        <a href="#" class="text-[#FFD6E8] hover:text-white text-sm">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="js/script.js" defer></script>
+
+</body>
+</html>
